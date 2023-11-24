@@ -23,8 +23,13 @@
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('reports')" :active="request()->routeIs('reports')">
-                            {{ __('Booking Reports') }}
+                        <x-nav-link :href="route('bookingRequest')" :active="request()->routeIs('bookingRequest')">
+                            {{ __('Booking Request') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('bookingApproved')" :active="request()->routeIs('bookingApproved')">
+                            {{ __('Booking Approved') }}
                         </x-nav-link>
                     </div>
                 @elseif(Auth::user()->user_type == 'approver')
@@ -91,8 +96,11 @@
             <x-responsive-nav-link :href="route('booking')" :active="request()->routeIs('booking')">
                 {{ __('Booking Vehicle') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('reports')" :active="request()->routeIs('reports')">
-                {{ __('Booking Reports') }}
+            <x-responsive-nav-link :href="route('bookingRequest')" :active="request()->routeIs('bookingRequest')">
+                {{ __('Booking Vehicle') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('bookingApproved')" :active="request()->routeIs('bookingApproved')">
+                {{ __('Booking Approved') }}
             </x-responsive-nav-link>
             @elseif(Auth::user()->user_type == 'approver')
             <x-responsive-nav-link :href="route('approval')" :active="request()->routeIs('approval')">

@@ -30,8 +30,9 @@ Route::controller(BookingController::class)
     ->middleware(['auth', 'verified', OnlyAdminMiddleware::class])->group(function () {
         Route::get('/booking', 'index')->name('booking');
         Route::post('/booking', 'bookingVehicle');
+        Route::get('/booking/request', 'bookingRequest')->name('bookingRequest');
         Route::get('/reports/export', 'export');
-        Route::get('/reports', 'reports')->name('reports');
+        Route::get('/booking/approved', 'bookingApproved')->name('bookingApproved');
     });
 
 Route::controller(BookingApprovalController::class)

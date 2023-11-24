@@ -1,5 +1,16 @@
-php artisan migrate
-php artisan db:seed
+-   composer install
+-   npm install
+
+-   cp .env.example .env
+-   sesuaikan config database
+-   php artisan migrate
+-   php artisan db:seed
+
+-   jalankan command ini di 2 terminal
+
+    `npm run dev & php artisan serve`
+
+---
 
 Admin:
 email: admin@example.com

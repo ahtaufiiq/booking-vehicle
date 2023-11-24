@@ -53,10 +53,11 @@ class BookingController extends Controller
         $secondApprover->approver_id = $second_approver_id;
         $secondApprover->save();
 
-        return redirect("/booking");
+        Log::info('admin book vehicle', [$booking]);
+        return redirect("/booking/request");
     }
 
-    public function reports()
+    public function bookingApproved()
     {
 
         $reports = Booking::with('vehicle')
@@ -70,8 +71,23 @@ class BookingController extends Controller
         ]);
     }
 
+    public function bookingRequest()
+    {
+
+        $bookingRequest = Booking::with('vehicle')
+            ->with('driver')
+            ->where('status', 'requested')
+            ->orderBy('date', 'desc')
+            ->get();
+
+        return view('request', [
+            'request' => $bookingRequest
+        ]);
+    }
+
     public function export()
     {
+        Log::info('export to excel');
         return Excel::download(new BookingExport, 'reports.xlsx');
     }
 }

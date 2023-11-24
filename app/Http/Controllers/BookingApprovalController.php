@@ -45,6 +45,7 @@ class BookingApprovalController extends Controller
             $booking->status = 'approved';
             $booking->update();
         }
+        Log::info('approve booking request');
         return redirect('/approval');
     }
 }
